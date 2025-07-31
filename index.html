@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSIRT</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <style>
+        /* Gaya dasar untuk menyembunyikan main-content secara default */
+        .main-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <section class="secret-code-section" id="landing">
+        <div class="landing-content">
+            <p>Welcome to</p>
+            <ul class="code">
+                <li tabindex="0" class="digit">
+                    <span>C</span>
+                </li>
+                <li tabindex="0" class="digit">
+                    <span>S</span>
+                </li>
+                <li tabindex="0" class="digit">
+                    <span>I</span>
+                </li>
+                <li tabindex="0" class="digit">
+                    <span>R</span>
+                </li>
+                <li tabindex="0" class="digit">
+                    <span>T</span>
+                </li>
+                <li tabindex="0" class="digit">
+                    <span>-</span>
+                </li>
+                <li tabindex="0" class="digit">
+                    <span>P</span>
+                </li>
+                <li tabindex="0" class="digit">
+                    <span>A</span>
+                </li>
+                <li tabindex="0" class="digit">
+                    <span>L</span>
+                </li>
+                <li tabindex="0" class="digit">
+                    <span>I</span>
+                </li>
+            </ul> 
+        </div>
+            
+        <div class="light-button">
+            <button class="bt" onclick="showMainContent()">
+              <div class="light-holder">
+                <div class="dot"></div>
+                <div class="light"></div>
+              </div>
+              <div class="button-holder">
+                  <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path>
+                </svg>
+                <p>SIGN IN</p>
+              </div>
+            </button>
+          </div>
+        
+    </section>
+
+    <div class="main-content" id="mainContent">
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-container">
+                    <div class="nav-logo">
+                        <a href="#home">
+                            <img src="images/Logo.png" alt="CSIRT_Pali Logo" class="logo">
+                        </a>
+                    </div>
+                    
+                    <div class="nav-menu" id="nav-menu">
+                        <ul class="nav-list">
+                            <li class="nav-item">
+                                <a href="#servicios" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#recursos" class="nav-link">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#comunidad" class="nav-link">Services</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#equipos-miembros">Equipos miembros</a></li>
+                                    <li><a href="#adherir-equipo">Adherir un equipo</a></li>
+                                    <li><a href="#aliados">Aliados</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#servicios" class="nav-link">Galery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#recursos" class="nav-link">RFC2350</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#recursos" class="nav-link">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <section class="hero" id="home">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Protegiendo a las Américas en el ciberespacio</h1>
+                    <p class="hero-subtitle">
+                        Red de los Equipos de Respuesta ante Incidentes Cibernéticos (CSIRTs) gubernamentales de los Estados Miembros de la Organización de los Estados Americanos (OEA)
+                    </p>
+                    <button class="cta-btn">
+                        Conoce más
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="hero-image">
+                    <img src="images/bg2.png" alt="Cybersecurity Illustration">
+                </div>
+            </div>
+        </section>
+
+          <section class="about-us-section">
+            <div class="about-us-container">
+              <div class="about-us-photo">
+                <img src="images/Logo.png" alt="Logo CSIRT" />
+              </div>
+              <div class="about-us-info">
+                <h2>Tentang Kami</h2>
+                <p>
+                  CSIRTAmericas adalah jaringan kolaborasi antar tim respons insiden siber di kawasan Amerika, yang bertujuan untuk memperkuat keamanan siber, berbagi informasi, dan meningkatkan kapasitas respons insiden di antara negara-negara anggota. Kami berkomitmen untuk membangun ekosistem digital yang lebih aman dan tangguh melalui kolaborasi, pelatihan, dan pertukaran pengetahuan.
+                </p>
+              </div>
+            </div>
+          </section>
+        
+        <section class="requirements">
+            <div class="container">
+                <div class="requirements-content">
+                    <h2 class="section-title">Preguntas Frecuentes (FAQs)</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">
+                                1. ¿Cuál es el objetivo principal de CSIRTAmericas?
+                                <span class="faq-icon">
+                                    <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                                    <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
+                                </span>
+                            </button>
+                            <div class="faq-answer">El objetivo principal es fortalecer la ciberseguridad en la región de las Américas mediante la colaboración, el intercambio de información y la mejora de la capacidad de respuesta ante incidentes cibernéticos.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">
+                                2. ¿Qué tipo de organizaciones pueden unirse a la red?
+                                <span class="faq-icon">
+                                    <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                                    <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
+                                </span>
+                            </button>
+                            <div class="faq-answer">Principalmente CSIRTs gubernamentales de los Estados Miembros de la OEA, así como otras entidades relevantes en ciberseguridad.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">
+                                3. ¿Qué beneficios ofrece la membresía?
+                                <span class="faq-icon">
+                                    <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                                    <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
+                                </span>
+                            </button>
+                            <div class="faq-answer">Acceso a información exclusiva, capacitaciones, asistencia técnica y la oportunidad de colaborar con otros equipos de la región.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">
+                                4. ¿Cómo se puede solicitar la adhesión?
+                                <span class="faq-icon">
+                                    <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                                    <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
+                                </span>
+                            </button>
+                            <div class="faq-answer">Se puede solicitar la adhesión contactando al equipo coordinador a través del formulario de contacto o enviando una solicitud formal por correo electrónico.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">
+                                5. ¿Dónde se puede encontrar más información?
+                                <span class="faq-icon">
+                                    <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                                    <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
+                                </span>
+                            </button>
+                            <div class="faq-answer">En la sección de contacto del sitio web o consultando los recursos disponibles en línea sobre CSIRTAmericas.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+          <section class="services" id="servicios">
+            <div class="container">
+                <h2>Pelayanan kami</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="service-title">Cybersecurity alerts</h3>
+                        <p class="service-description">
+                            Promovemos el intercambio de información sobre alertas de ciberseguridad
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="service-title">Technical assistance</h3>
+                        <p class="service-description">
+                            Brindamos asistencia técnica para fortalecer los servicios de los CSIRTs
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="service-title">Community of CSIRTs</h3>
+                        <p class="service-description">
+                            Ofrecemos capacitaciones a especialistas de ciberseguridad de los CSIRTs
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <p class="about-text">
+                        <h2>Mitra Kami</h2></p>
+                    <div class="partners">
+                        <div class="partner-logo"><img src="images/logo.png" alt="Partner 1"></div>
+                        <div class="partner-logo"><img src="images/PALI.png" alt="Partner 2"></div>
+                        <div class="partner-logo"><img src="images/logo.png" alt="Partner 3"></div>
+                        <div class="partner-logo"><img src="images/PALI.png" alt="Partner 4"></div>
+                        <div class="partner-logo"><img src="images/logo.png" alt="Partner 5"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="footer-logo">
+                            <img src="images/Logo.png" alt="CSIRTAmericas Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+      document.querySelectorAll('.faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const item = btn.closest('.faq-item');
+          item.classList.toggle('open');
+          // Icon toggle
+          const plus = btn.querySelector('.icon-plus');
+          const close = btn.querySelector('.icon-close');
+          if(item.classList.contains('open')) {
+            plus.style.display = 'none';
+            close.style.display = 'inline';
+          } else {
+            plus.style.display = 'inline';
+            close.style.display = 'none';
+          }
+        });
+      });
+      // Set initial icon state
+      window.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
+          btn.querySelector('.icon-plus').style.display = 'inline';
+          btn.querySelector('.icon-close').style.display = 'none';
+        });
+      });
+    </script>
+    
+    <script>
+        function showMainContent() {
+          // Sembunyikan landing
+          document.getElementById('landing').style.display = 'none';
+    
+          // Tampilkan mainContent
+          const main = document.getElementById('mainContent');
+          main.style.display = 'block';
+    
+          // Scroll ke mainContent dengan behavior smooth
+          main.scrollIntoView({ behavior: 'smooth' });
+    
+          // Tunggu hingga scroll kira-kira selesai (misalnya 800ms), lalu tampilkan extraContent
+          setTimeout(() => {
+            document.getElementById('extraContent').style.display = 'block';
+          }, 800); // Durasi sesuai dengan kecepatan scroll rata-rata
+        }
+      </script>
+</body>
+</html>
