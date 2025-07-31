@@ -119,6 +119,7 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    margin-top: -20px;
 }
 
 .hero-container {
@@ -908,7 +909,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100px;
+  height: 60px;
   width: 200px;
   background-color: #0a0a0a;
   border-radius: 5px;
@@ -971,4 +972,89 @@ body {
     rgba(255, 255, 255, 0) 75%,
     rgba(255, 255, 255, 0) 100%
   );
+}
+
+
+.main-content {
+  display: none;
+}
+
+/* Styling untuk secret code section */
+.secret-code-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.landing-content p {
+  font-size: 1.5rem;
+  position: fixed;
+  margin-bottom: 2rem;
+  padding-top: 26px;
+  opacity: 0.9;
+}
+
+.code {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.light-button {
+  margin-top: 3rem;
+}
+
+.bt {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bt:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.light-holder {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.light {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #4ade80, transparent);
+  border-radius: 50%;
 }
