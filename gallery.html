@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - CSIRT</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+</head>
+<body>
+    <header class="header transparent">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="#home">
+                        <img src="images/Logo.png" alt="CSIRT_Pali Logo" class="logo">
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="index.html#home" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="profile.html#profile" class="nav-link">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#servicios" class="nav-link">Services</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="index.html#equipos-miembros">Equipos miembros</a></li>
+                                <li><a href="index.html#adherir-equipo">Adherir un equipo</a></li>
+                                <li><a href="index.html#aliados">Aliados</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="gallery.html" class="nav-link">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#rfc2350" class="nav-link">RFC2350</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#contact" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="gallery" id="gallery" tabindex="-1">
+        <div class="gallery-container">
+          <h1 class="gallery-title">Gallery</h1>
+    
+          <div class="gallery-grid">
+            <figure class="gallery-item">
+              <img src="images/Logo.png" alt="Description of Photo 1" loading="lazy">
+              <figcaption>Description of Photo 1</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="images/Logo.png" alt="Description of Photo 2" loading="lazy">
+              <figcaption>Description of Photo 2</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="images/Logo.png" alt="Description of Photo 3" loading="lazy">
+              <figcaption>Description of Photo 3</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="images/Logo.png" alt="Description of Photo 4" loading="lazy">
+              <figcaption>Description of Photo 4</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="images/Logo.png" alt="Description of Photo 5" loading="lazy">
+              <figcaption>Description of Photo 5</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="images/Logo.png" alt="Description of Photo 6" loading="lazy">
+              <figcaption>Description of Photo 6</figcaption>
+            </figure>
+          </div>
+    
+          <nav class="pagination" aria-label="Pagination">
+            <a href="gallery.html?page=1" class="active" aria-current="page">1</a>
+            <a href="gallery.html?page=2">2</a>
+          </nav>
+        </div>
+      </main>
+
+    <script src="js/main.js"></script>
+    <script>
+      // Mobile menu toggle
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      
+      mobileMenuToggle.addEventListener('click', function() {
+        mobileMenuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+      
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenuToggle.classList.remove('active');
+          navMenu.classList.remove('active');
+        });
+      });
+    </script>
+</body>
+</html>
