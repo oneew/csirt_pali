@@ -3,18 +3,412 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - CSIRT</title>
+    <title>Profile - CSIRT PALI</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <style>
+        /* Profile specific styles */
+        .profile-hero {
+            padding: 140px 0 60px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(102, 126, 234, 0.3) 100%), url('../images/home1.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            z-index: 1;
+            animation: heroGlow 4s ease-in-out infinite;
+        }
+
+        .profile-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .profile-main {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+
+        .profile-intro {
+            background: #fff;
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: shimmer 2s infinite;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-image-container {
+            text-align: center;
+        }
+
+        .profile-logo {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            object-fit: contain;
+            background: #fff;
+            padding: 20px;
+            border: 3px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .profile-logo:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .profile-text {
+            flex: 1;
+        }
+
+        .profile-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .profile-subtitle {
+            font-size: 1.25rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .profile-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #374151;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .mission-card, .vision-card {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .mission-card::before, .vision-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .mission-card:hover::before, .vision-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .card-icon i {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .mission-card:hover .card-icon, .vision-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .card-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-description {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .values-section {
+            background: #fff;
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .values-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.15);
+            background: #fff;
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .value-icon i {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .value-item:hover .value-icon {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .value-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .value-description {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .team-section {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            color: #fff;
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .team-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .team-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .team-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .team-description {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-hero {
+                padding: 120px 0 40px;
+            }
+
+            .profile-intro {
+                padding: 2rem;
+            }
+
+            .profile-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .profile-logo {
+                width: 200px;
+                height: 200px;
+            }
+
+            .profile-title {
+                font-size: 2rem;
+            }
+
+            .mission-vision {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .mission-card, .vision-card {
+                padding: 2rem;
+            }
+
+            .values-section {
+                padding: 2rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-title {
+                font-size: 1.75rem;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .values-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header transparent">
         <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <a href="#home">
+                    <a href="index.html">
                         <img src="images/Logo.png" alt="CSIRT_Pali Logo" class="logo">
                     </a>
                 </div>
@@ -31,24 +425,16 @@
                             <a href="index.html#home" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="profile.html#profile" class="nav-link">Profile</a>
+                            <a href="profile.html" class="nav-link">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a href="index.html#servicios" class="nav-link">Services</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="index.html#equipos-miembros">Equipos miembros</a></li>
-                                <li><a href="index.html#adherir-equipo">Adherir un equipo</a></li>
-                                <li><a href="index.html#aliados">Aliados</a></li>
-                            </ul>
+                            <a href="services.html" class="nav-link">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a href="index.html#gallery" class="nav-link">Gallery</a>
+                            <a href="gallery.html" class="nav-link">Gallery</a>
                         </li>
                         <li class="nav-item">
-                            <a href="index.html#rfc2350" class="nav-link">RFC2350</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index.html#contact" class="nav-link">Contact</a>
+                            <a href="contact.html" class="nav-link">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -56,40 +442,215 @@
         </nav>
     </header>
 
-    <section class="hero" id="profile" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-        <div class="hero-content" style="text-align: center;">
-            <h1 class="hero-title">CSIRT PALI</h1>
-            <div class="about-us-container" style="display: flex; flex-direction: column; align-items: center;">
-                <div class="about-us-photo">
-                    <img src="images/Logo.png" alt="Logo CSIRT" />
+    <section class="profile-hero">
+        <div class="profile-hero-content">
+            <h1 class="hero-title">About CSIRT PALI</h1>
+            <p class="hero-subtitle">
+                Leading cybersecurity excellence across the Americas through collaboration, innovation, and expertise
+            </p>
+        </div>
+    </section>
+
+    <section class="profile-main">
+        <div class="container">
+            <div class="profile-intro">
+                <div class="profile-content">
+                    <div class="profile-image-container">
+                        <img src="images/Logo.png" alt="CSIRT PALI Logo" class="profile-logo">
+                    </div>
+                    <div class="profile-text">
+                        <h2 class="profile-title">CSIRT PALI</h2>
+                        <p class="profile-subtitle">Computer Security Incident Response Team - Pan American Leadership Initiative</p>
+                        <p class="profile-description">
+                            CSIRT PALI is a premier cybersecurity organization dedicated to enhancing digital security across the Americas. We serve as a collaborative hub for cybersecurity incident response teams, fostering information sharing, providing technical expertise, and building resilient cyber defense capabilities throughout the region. Our commitment extends beyond traditional boundaries, creating a unified front against evolving cyber threats while promoting best practices and innovative security solutions.
+                        </p>
+                    </div>
                 </div>
-                <div class="about-us-info" style="text-align: justify; max-width: 800px; margin-top: 1rem;">
-                    <p>
-                        CSIRT PALI is dedicated to enhancing cybersecurity across the Americas. Our mission is to foster collaboration among cybersecurity incident response teams, share vital information, and improve incident response capabilities among member countries. We are committed to building a safer and more resilient digital ecosystem through collaboration, training, and knowledge exchange.
+            </div>
+
+            <div class="mission-vision">
+                <div class="mission-card">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="card-title">Our Mission</h3>
+                    <p class="card-description">
+                        To strengthen cybersecurity resilience across the Americas by fostering collaboration among CSIRT teams, sharing critical threat intelligence, and providing comprehensive incident response capabilities. We strive to build a unified defense network that protects digital infrastructure and promotes cyber peace in the region.
                     </p>
+                </div>
+
+                <div class="vision-card">
+                    <div class="card-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="card-title">Our Vision</h3>
+                    <p class="card-description">
+                        To be the leading cybersecurity collaborative network in the Americas, recognized for excellence in incident response, threat intelligence, and capacity building. We envision a digitally secure region where organizations can confidently operate in cyberspace, protected by robust, interconnected defense mechanisms.
+                    </p>
+                </div>
+            </div>
+
+            <div class="values-section">
+                <h2 class="values-title">Our Core Values</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="value-name">Collaboration</h3>
+                        <p class="value-description">
+                            We believe in the power of partnership and collective action to address cybersecurity challenges effectively.
+                        </p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3 class="value-name">Excellence</h3>
+                        <p class="value-description">
+                            We maintain the highest standards in all our operations, continuously improving our capabilities and services.
+                        </p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="value-name">Innovation</h3>
+                        <p class="value-description">
+                            We embrace cutting-edge technologies and methodologies to stay ahead of evolving cyber threats.
+                        </p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="value-name">Integrity</h3>
+                        <p class="value-description">
+                            We operate with transparency, honesty, and ethical principles in all our interactions and decisions.
+                        </p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="value-name">Community</h3>
+                        <p class="value-description">
+                            We foster a strong sense of community among cybersecurity professionals across the Americas.
+                        </p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="value-name">Responsiveness</h3>
+                        <p class="value-description">
+                            We provide rapid, effective responses to cybersecurity incidents with 24/7 availability and expertise.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="js/main.js"></script>
+    <section class="team-section">
+        <div class="container">
+            <div class="team-content">
+                <h2 class="team-title">Join Our Network</h2>
+                <p class="team-description">
+                    Become part of the largest cybersecurity collaborative network in the Americas. Together, we're building a safer digital future through shared knowledge, resources, and expertise. Join leading organizations and security professionals who are making a difference in cybersecurity.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-btn">
+                        <i class="fas fa-envelope"></i> Contact Us
+                    </a>
+                    <a href="services.html" class="cta-btn" style="background: transparent; border: 2px solid #667eea;">
+                        <i class="fas fa-cogs"></i> Our Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/Logo.png" alt="CSIRTAmericas Logo">
+                    </div>
+                    <div class="footer-info">
+                        <p>&copy; 2024 CSIRT-PALI. All rights reserved.</p>
+                        <p>Contact: info@csirt-pali.org</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
-      // Mobile menu toggle
-      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-      const navMenu = document.getElementById('nav-menu');
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
 
-      mobileMenuToggle.addEventListener('click', function() {
-        mobileMenuToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-      });
-
-      // Close mobile menu when clicking on a link
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenuToggle.classList.remove('active');
-          navMenu.classList.remove('active');
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
-      });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header transparency on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.remove('transparent');
+            } else {
+                header.classList.add('transparent');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe animated elements
+        document.querySelectorAll('.profile-intro, .mission-card, .vision-card, .values-section').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Add smooth hover effects to value items
+        document.querySelectorAll('.value-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
     </script>
 </body>
 </html>
