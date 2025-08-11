@@ -3,39 +3,367 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSIRT</title>
+    <title>CSIRT PALI - Classified Access</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <style>
+        /* Enhanced Secret Landing Styles */
+        .secret-landing {
+            min-height: 100vh;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            position: relative;
+            overflow: hidden;
+            transition: all 1s ease-out;
+        }
+
+        .secret-landing.hide {
+            opacity: 0;
+            transform: scale(0.9);
+            filter: blur(10px);
+        }
+
+        /* Matrix-style background */
+        .secret-landing::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 98%, rgba(0, 255, 0, 0.03) 100%),
+                linear-gradient(transparent 98%, rgba(0, 255, 0, 0.03) 100%);
+            background-size: 3px 3px;
+            animation: matrix 20s linear infinite;
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        @keyframes matrix {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(3px, 3px); }
+        }
+
+        @keyframes terminalGlow {
+            0% { box-shadow: 0 0 20px rgba(0, 255, 65, 0.3), inset 0 0 20px rgba(0, 255, 65, 0.1); }
+            100% { box-shadow: 0 0 30px rgba(0, 255, 65, 0.5), inset 0 0 30px rgba(0, 255, 65, 0.15); }
+        }
+
+        .terminal-header {
+            background: rgba(0, 255, 65, 0.1);
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #00ff41;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00ff41;
+            opacity: 0.7;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 0.7; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        .terminal-title {
+            color: #00ff41;
+            font-size: 0.9rem;
+            margin-left: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-body {
+            padding: 2rem;
+            color: #00ff41;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: typeIn 0.5s ease-out forwards;
+        }
+
+        .terminal-line:nth-child(1) { animation-delay: 0.5s; }
+        .terminal-line:nth-child(2) { animation-delay: 1s; }
+        .terminal-line:nth-child(3) { animation-delay: 1.5s; }
+        .terminal-line:nth-child(4) { animation-delay: 2s; }
+        .terminal-line:nth-child(5) { animation-delay: 2.5s; }
+        .terminal-line:nth-child(6) { animation-delay: 3s; }
+        .terminal-line:nth-child(7) { animation-delay: 3.5s; }
+
+        @keyframes typeIn {
+            0% { 
+                opacity: 0; 
+                transform: translateX(-10px);
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateX(0);
+            }
+        }
+
+        .prompt {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .success {
+            color: #51cf66;
+        }
+
+        .warning {
+            color: #ffd43b;
+        }
+
+        .classified-text {
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 2rem 0;
+            color: #00ff41;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+        }
+
+        /* Enhanced Access Code */
+        .access-code-container {
+            background: rgba(0, 30, 0, 0.8);
+            border: 1px solid #00ff41;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .code-display {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .code-digit {
+            background: rgba(0, 20, 0, 0.9);
+            border: 2px solid #00ff41;
+            color: #00ff41;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            font-family: 'JetBrains Mono', monospace;
+            text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+        }
+
+        .code-digit:hover {
+            background: rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+            transform: scale(1.05);
+        }
+
+        .code-digit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 49%, rgba(0, 255, 65, 0.1) 50%, transparent 51%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .code-digit:hover::before {
+            opacity: 1;
+            animation: scan 1s ease-in-out infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Access Button */
+        .access-button {
+            background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);
+            color: #000;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 255, 65, 0.3);
+        }
+
+        .access-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .access-button:hover::before {
+            left: 100%;
+        }
+
+        .access-button:hover {
+            background: linear-gradient(135deg, #00ff41 0%, #00ff41 100%);
+            box-shadow: 0 6px 20px rgba(0, 255, 65, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .access-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 255, 65, 0.3);
+        }
+
+        /* Warning message */
+        .warning-text {
+            color: #ffd43b;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Glitch effect */
+        .glitch {
+            animation: glitch 0.3s ease-in-out;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        /* Main content styles remain the same but hidden initially */
+        .main-website {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+
+        .main-website.show {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Enhanced responsive */
+        @media (max-width: 768px) {
+
+            .code-digit {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .classified-text {
+                font-size: 1.2rem;
+            }
+
+            .access-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .code-display {
+                gap: 0.3rem;
+            }
+
+            .code-digit {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .access-code-container {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <section class="secret-code-section" id="landing">
-      <div class="landing-content">
-        <p>Welcome to</p>
-        <ul class="code">
-          <li tabindex="0" class="digit"><span>C</span></li>
-          <li tabindex="0" class="digit"><span>S</span></li>
-          <li tabindex="0" class="digit"><span>I</span></li>
-          <li tabindex="0" class="digit"><span>R</span></li>
-          <li tabindex="0" class="digit"><span>T</span></li>
-          <li tabindex="0" class="digit"><span>-</span></li>
-          <li tabindex="0" class="digit"><span>P</span></li>
-          <li tabindex="0" class="digit"><span>A</span></li>
-          <li tabindex="0" class="digit"><span>L</span></li>
-          <li tabindex="0" class="digit"><span>I</span></li>
-        </ul>
-      </div>
-      <div class="light-button">
-        <button class="bt" onclick="showMainContent()">
-          <div class="button-holder">
-            <p>SIGN IN</p>
-          </div>
-        </button>
-      </div>
+    <!-- Secret Landing Page -->
+    <section class="secret-landing" id="secretLanding">
+
+        <div class="classified-text">
+            [ CLASSIFIED CYBERSECURITY NETWORK ]
+        </div>
+
+        <div class="access-code-container">
+            <div style="color: #00ff41; margin-bottom: 1rem; font-weight: bold;">
+                ENTER ACCESS SEQUENCE
+            </div>
+            <div class="code-display">
+                <div class="code-digit" data-char="C">C</div>
+                <div class="code-digit" data-char="S">S</div>
+                <div class="code-digit" data-char="I">I</div>
+                <div class="code-digit" data-char="R">R</div>
+                <div class="code-digit" data-char="T">T</div>
+                <div class="code-digit" data-char="-">-</div>
+                <div class="code-digit" data-char="P">P</div>
+                <div class="code-digit" data-char="A">A</div>
+                <div class="code-digit" data-char="L">L</div>
+                <div class="code-digit" data-char="I">I</div>
+            </div>
+            <button class="access-button" onclick="initiateAccess()">
+                <i class="fas fa-unlock"></i> GRANT ACCESS
+            </button>
+            <div class="warning-text">
+                ⚠ Unauthorized access is prohibited and monitored
+            </div>
+        </div>
     </section>
 
-    <div class="main-content" id="mainContent">
+    <!-- Main Website Content -->
+    <div class="main-website" id="mainWebsite">
         <header class="header transparent">
             <nav class="navbar">
                 <div class="nav-container">
@@ -61,17 +389,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="services.html" class="nav-link">Services</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#equipos-miembros">Equipos miembros</a></li>
-                                    <li><a href="#adherir-equipo">Adherir un equipo</a></li>
-                                    <li><a href="#aliados">Aliados</a></li>
-                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a href="gallery.html" class="nav-link">Gallery</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#rfc2350" class="nav-link">RFC2350</a>
                             </li>
                             <li class="nav-item">
                                 <a href="contact.html" class="nav-link">Contact</a>
@@ -85,14 +405,14 @@
         <section class="hero" id="home">
             <div class="hero-container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Protegiendo a las Américas en el ciberespacio</h1>
+                    <h1 class="hero-title">Protecting the Americas in Cyberspace</h1>
                     <p class="hero-subtitle">
-                        Red de los Equipos de Respuesta ante Incidentes Cibernéticos (CSIRTs) gubernamentales de los Estados Miembros de la Organización de los Estados Americanos (OEA)
+                        Network of Computer Security Incident Response Teams (CSIRTs) from government organizations across the Americas, fostering collaboration and strengthening cybersecurity capabilities
                     </p>
-                    <button class="cta-btn">
-                        Conoce más
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
+                    <a href="services.html" class="cta-btn">
+                        <i class="fas fa-shield-alt"></i>
+                        Explore Our Services
+                    </a>
                 </div>
                 <div class="hero-image">
                     <img src="images/bg2.png" alt="Cybersecurity Illustration">
@@ -100,74 +420,68 @@
             </div>
         </section>
 
-          <section class="about-us-section" id="profile">
+        <section class="about-us-section" id="profile">
             <div class="about-us-container">
-              <div class="about-us-photo">
-                <img src="images/Logo.png" alt="Logo CSIRT" />
-              </div>
-              <div class="about-us-info">
-                <h2>Tentang Kami</h2>
-                <p class="about-us-info-text">
-                  CSIRTAmericas adalah jaringan kolaborasi antar tim respons insiden siber di kawasan Amerika, yang bertujuan untuk memperkuat keamanan siber, berbagi informasi, dan meningkatkan kapasitas respons insiden di antara negara-negara anggota. Kami berkomitmen untuk membangun ekosistem digital yang lebih aman dan tangguh melalui kolaborasi, pelatihan, dan pertukaran pengetahuan.
-                </p>
-              </div>
+                <div class="about-us-photo">
+                    <img src="images/Logo.png" alt="Logo CSIRT" />
+                </div>
+                <div class="about-us-info">
+                    <h2>About Us</h2>
+                    <p class="about-us-info-text">
+                        CSIRT PALI is a collaborative network of cybersecurity incident response teams across the Americas, dedicated to strengthening cybersecurity, sharing critical information, and enhancing incident response capabilities among member countries. We are committed to building a safer and more resilient digital ecosystem through collaboration, training, and knowledge exchange.
+                    </p>
+                    <a href="profile.html" class="cta-btn" style="display: inline-flex; margin-top: 1rem;">
+                        <i class="fas fa-info-circle"></i>
+                        Learn More
+                    </a>
+                </div>
             </div>
-          </section>
+        </section>
         
         <section class="requirements">
             <div class="container">
                 <div class="requirements-content">
-                    <h2 class="section-title">Preguntas Frecuentes (FAQs)</h2>
+                    <h2 class="section-title">Frequently Asked Questions</h2>
                     <div class="faq-list">
                         <div class="faq-item">
                             <button type="button" class="faq-question">
-                                1. ¿Cuál es el objetivo principal de CSIRTAmericas?
+                                1. What is the main objective of CSIRT PALI?
                                 <span class="faq-icon">
                                     <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
                                     <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
                                 </span>
                             </button>
-                            <div class="faq-answer">El objetivo principal es fortalecer la ciberseguridad en la región de las Américas mediante la colaboración, el intercambio de información y la mejora de la capacidad de respuesta ante incidentes cibernéticos.</div>
+                            <div class="faq-answer">Our main objective is to strengthen cybersecurity across the Americas region through collaboration, information sharing, and improving cybersecurity incident response capabilities among member organizations.</div>
                         </div>
                         <div class="faq-item">
                             <button type="button" class="faq-question">
-                                2. ¿Qué tipo de organizaciones pueden unirse a la red?
+                                2. What types of organizations can join the network?
                                 <span class="faq-icon">
                                     <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
                                     <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
                                 </span>
                             </button>
-                            <div class="faq-answer">Principalmente CSIRTs gubernamentales de los Estados Miembros de la OEA, así como otras entidades relevantes en ciberseguridad.</div>
+                            <div class="faq-answer">Primarily government CSIRTs from OAS member states, as well as other relevant cybersecurity organizations and institutions.</div>
                         </div>
                         <div class="faq-item">
                             <button type="button" class="faq-question">
-                                3. ¿Qué beneficios ofrece la membresía?
+                                3. What benefits does membership offer?
                                 <span class="faq-icon">
                                     <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
                                     <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
                                 </span>
                             </button>
-                            <div class="faq-answer">Acceso a información exclusiva, capacitaciones, asistencia técnica y la oportunidad de colaborar con otros equipos de la región.</div>
+                            <div class="faq-answer">Access to exclusive threat intelligence, professional training, technical assistance, and the opportunity to collaborate with other leading cybersecurity teams in the region.</div>
                         </div>
                         <div class="faq-item">
                             <button type="button" class="faq-question">
-                                4. ¿Cómo se puede solicitar la adhesión?
+                                4. How can organizations apply for membership?
                                 <span class="faq-icon">
                                     <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
                                     <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
                                 </span>
                             </button>
-                            <div class="faq-answer">Se puede solicitar la adhesión contactando al equipo coordinador a través del formulario de contacto o enviando una solicitud formal por correo electrónico.</div>
-                        </div>
-                        <div class="faq-item">
-                            <button type="button" class="faq-question">
-                                5. ¿Dónde se puede encontrar más información?
-                                <span class="faq-icon">
-                                    <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
-                                    <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
-                                </span>
-                            </button>
-                            <div class="faq-answer">En la sección de contacto del sitio web o consultando los recursos disponibles en línea sobre CSIRTAmericas.</div>
+                            <div class="faq-answer">Organizations can apply by contacting our coordination team through the contact form or by sending a formal application via email to our designated address.</div>
                         </div>
                     </div>
                 </div>
@@ -176,35 +490,41 @@
 
         <section class="services" id="servicios">
             <div class="container">
-                <h2>Pelayanan kami</h2>
+                <h2>Our Services</h2>
                 <div class="services-grid">
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3 class="service-title">Cybersecurity alerts</h3>
+                        <h3 class="service-title">Cybersecurity Alerts</h3>
                         <p class="service-description">
-                            Promovemos el intercambio de información sobre alertas de ciberseguridad
+                            We promote the exchange of critical cybersecurity alerts and threat intelligence across the network
                         </p>
                     </div>
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-tools"></i>
                         </div>
-                        <h3 class="service-title">Technical assistance</h3>
+                        <h3 class="service-title">Technical Assistance</h3>
                         <p class="service-description">
-                            Brindamos asistencia técnica para fortalecer los servicios de los CSIRTs
+                            We provide technical assistance to strengthen and enhance CSIRT services and capabilities
                         </p>
                     </div>
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-users"></i>
                         </div>
-                        <h3 class="service-title">Community of CSIRTs</h3>
+                        <h3 class="service-title">CSIRT Community</h3>
                         <p class="service-description">
-                            Ofrecemos capacitaciones a especialistas de ciberseguridad de los CSIRTs
+                            We offer specialized training and capacity building for cybersecurity professionals
                         </p>
                     </div>
+                </div>
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="services.html" class="cta-btn">
+                        <i class="fas fa-arrow-right"></i>
+                        View All Services
+                    </a>
                 </div>
             </div>
         </section>
@@ -212,7 +532,7 @@
         <section class="about" id="about">
             <div class="container">
                 <div class="about-content">
-                    <h2>Mitra Kami</h2>
+                    <h2>Our Partners</h2>
                     <div class="partners">
                         <div class="partner-logo"><img src="images/Logo.png" alt="Partner 1"></div>
                         <div class="partner-logo"><img src="images/PALI.png" alt="Partner 2"></div>
@@ -243,84 +563,330 @@
 
     <script src="js/main.js"></script>
     <script>
-      // Mobile menu toggle
-      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-      const navMenu = document.getElementById('nav-menu');
-      
-      mobileMenuToggle.addEventListener('click', function() {
-        mobileMenuToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-      });
-      
-      // Close mobile menu when clicking on a link
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenuToggle.classList.remove('active');
-          navMenu.classList.remove('active');
-        });
-      });
-      
-      // FAQ functionality
-      document.querySelectorAll('.faq-question').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          const item = btn.closest('.faq-item');
-          item.classList.toggle('open');
-          // Icon toggle
-          const plus = btn.querySelector('.icon-plus');
-          const close = btn.querySelector('.icon-close');
-          if(item.classList.contains('open')) {
-            plus.style.display = 'none';
-            close.style.display = 'inline';
-          } else {
-            plus.style.display = 'inline';
-            close.style.display = 'none';
-          }
-        });
-      });
-      
-      // Set initial icon state
-      window.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.faq-question').forEach(function(btn) {
-          btn.querySelector('.icon-plus').style.display = 'inline';
-          btn.querySelector('.icon-close').style.display = 'none';
-        });
-      });
-      
-      // Header transparency on scroll
-      window.addEventListener('scroll', function() {
-        const header = document.querySelector('.header');
-        if (window.scrollY > 100) {
-          header.classList.remove('transparent');
-        } else {
-          header.classList.add('transparent');
+        // Secret landing functionality
+        let accessGranted = false;
+
+        function initiateAccess() {
+            if (accessGranted) return;
+
+            // Simulate processing
+            const button = document.querySelector('.access-button');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PROCESSING...';
+            button.style.background = '#ffd43b';
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> ACCESS GRANTED';
+                button.style.background = 'linear-gradient(135deg, #51cf66 0%, #40c057 100%)';
+                
+                setTimeout(() => {
+                    showMainWebsite();
+                }, 1000);
+            }, 2000);
+
+            accessGranted = true;
         }
-      });
-    </script>
-    
-    <script>
-        function showMainContent() {
-          // Sembunyikan landing dengan animasi fade out
-          const landing = document.getElementById('landing');
-          landing.style.transition = 'opacity 0.5s ease-out';
-          landing.style.opacity = '0';
-          
-          setTimeout(() => {
-            landing.style.display = 'none';
+
+        function showMainWebsite() {
+            const secretLanding = document.getElementById('secretLanding');
+            const mainWebsite = document.getElementById('mainWebsite');
             
-            // Tampilkan mainContent
-            const main = document.getElementById('mainContent');
-            main.style.display = 'block';
-            main.style.opacity = '0';
-            main.style.transition = 'opacity 0.5s ease-in';
-            
-            // Scroll ke top dan fade in
-            window.scrollTo(0, 0);
+            // Hide secret landing with animation
+            secretLanding.classList.add('hide');
             
             setTimeout(() => {
-              main.style.opacity = '1';
-            }, 50);
-          }, 500);
+                secretLanding.style.display = 'none';
+                mainWebsite.classList.add('show');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+                
+                // Initialize main website functionality
+                initMainWebsite();
+            }, 1000);
         }
+
+        function initMainWebsite() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (mobileMenuToggle && navMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mobileMenuToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+                
+                // Close mobile menu when clicking on a link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+            }
+            
+            // FAQ functionality
+            document.querySelectorAll('.faq-question').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const item = btn.closest('.faq-item');
+                    item.classList.toggle('open');
+                    
+                    // Icon toggle
+                    const plus = btn.querySelector('.icon-plus');
+                    const close = btn.querySelector('.icon-close');
+                    if(item.classList.contains('open')) {
+                        plus.style.display = 'none';
+                        close.style.display = 'inline';
+                    } else {
+                        plus.style.display = 'inline';
+                        close.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Set initial icon state
+            document.querySelectorAll('.faq-question').forEach(function(btn) {
+                btn.querySelector('.icon-plus').style.display = 'inline';
+                btn.querySelector('.icon-close').style.display = 'none';
+            });
+            
+            // Header transparency on scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('.header');
+                if (window.scrollY > 100) {
+                    header.classList.remove('transparent');
+                } else {
+                    header.classList.add('transparent');
+                }
+            });
+
+            // Animate stats
+            animateStats();
+        }
+
+        function animateStats() {
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statsNumber = entry.target.querySelector('.stats-number');
+                        const finalValue = statsNumber.textContent;
+                        
+                        if (finalValue.includes('+')) {
+                            const numValue = parseInt(finalValue.replace('+', ''));
+                            let currentValue = 0;
+                            const increment = numValue / 30;
+                            
+                            const counter = setInterval(() => {
+                                currentValue += increment;
+                                if (currentValue >= numValue) {
+                                    statsNumber.textContent = finalValue;
+                                    clearInterval(counter);
+                                } else {
+                                    statsNumber.textContent = Math.floor(currentValue) + '+';
+                                }
+                            }, 50);
+                        } else if (finalValue.includes('/')) {
+                            // Handle 24/7 case
+                            statsNumber.textContent = finalValue;
+                        } else if (!isNaN(parseInt(finalValue))) {
+                            const numValue = parseInt(finalValue);
+                            let currentValue = 0;
+                            const increment = numValue / 30;
+                            
+                            const counter = setInterval(() => {
+                                currentValue += increment;
+                                if (currentValue >= numValue) {
+                                    statsNumber.textContent = finalValue;
+                                    clearInterval(counter);
+                                } else {
+                                    statsNumber.textContent = Math.floor(currentValue);
+                                }
+                            }, 50);
+                        }
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all stat items
+            document.querySelectorAll('.stat-item').forEach(item => {
+                observer.observe(item);
+            });
+        }
+
+        // Add interactive effects to code digits
+        document.querySelectorAll('.code-digit').forEach((digit, index) => {
+            digit.addEventListener('click', function() {
+                this.style.animation = 'none';
+                this.offsetHeight; // Trigger reflow
+                this.style.animation = 'scan 0.5s ease-in-out';
+                
+                // Add a satisfying click sound effect (visual feedback)
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 100);
+                }, 100);
+            });
+
+            // Add hover sound effect simulation
+            digit.addEventListener('mouseenter', function() {
+                this.style.textShadow = '0 0 15px rgba(0, 255, 65, 0.8)';
+            });
+
+            digit.addEventListener('mouseleave', function() {
+                this.style.textShadow = '0 0 5px rgba(0, 255, 65, 0.5)';
+            });
+        });
+
+        // Add typing effect to terminal
+        function addTypingEffect() {
+            const lines = document.querySelectorAll('.terminal-line');
+            lines.forEach((line, index) => {
+                const text = line.textContent;
+                line.textContent = '';
+                line.style.opacity = '1';
+                
+                setTimeout(() => {
+                    let i = 0;
+                    const typeInterval = setInterval(() => {
+                        if (i < text.length) {
+                            line.textContent += text.charAt(i);
+                            i++;
+                        } else {
+                            clearInterval(typeInterval);
+                        }
+                    }, 30);
+                }, (index * 800) + 500);
+            });
+        }
+
+        // Initialize typing effect on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                addTypingEffect();
+            }, 1000);
+        });
+
+        // Add matrix rain effect
+        function createMatrixRain() {
+            const canvas = document.createElement('canvas');
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '1';
+            canvas.style.opacity = '0.1';
+            
+            document.getElementById('secretLanding').appendChild(canvas);
+            
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+            const chars = matrix.split("");
+            
+            const font_size = 10;
+            const columns = canvas.width / font_size;
+            const drops = [];
+            
+            for (let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
+            
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#00ff41';
+                ctx.font = font_size + 'px arial';
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * font_size, drops[i] * font_size);
+                    
+                    if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            const matrixInterval = setInterval(draw, 35);
+            
+            // Stop matrix when transitioning to main site
+            setTimeout(() => {
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.target.style.display === 'none') {
+                            clearInterval(matrixInterval);
+                            canvas.remove();
+                            observer.disconnect();
+                        }
+                    });
+                });
+                
+                observer.observe(document.getElementById('secretLanding'), {
+                    attributes: true,
+                    attributeFilter: ['style']
+                });
+            }, 1000);
+        }
+
+        // Initialize matrix effect
+        setTimeout(createMatrixRain, 2000);
+
+        // Add keyboard shortcut for quick access (Easter egg)
+        let konamiCode = [];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+
+        document.addEventListener('keydown', function(e) {
+            konamiCode.push(e.code);
+            
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+            
+            if (konamiCode.join(',') === konamiSequence.join(',')) {
+                if (!accessGranted) {
+                    document.querySelector('.access-button').style.background = 'linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%)';
+                    document.querySelector('.access-button').innerHTML = '<i class="fas fa-rocket"></i> KONAMI ACCESS';
+                    setTimeout(() => {
+                        initiateAccess();
+                    }, 100);
+                }
+                konamiCode = [];
+            }
+        });
+
+        // Prevent right-click and certain keyboard shortcuts for added mystery
+        document.addEventListener('contextmenu', function(e) {
+            if (document.getElementById('secretLanding').style.display !== 'none') {
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('secretLanding').style.display !== 'none') {
+                if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'C') || (e.ctrlKey && e.key === 'u')) {
+                    e.preventDefault();
+                }
+            }
+        });
     </script>
 </body>
 </html>
