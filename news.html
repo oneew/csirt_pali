@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create News - CSIRT PALI Admin</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="images/Logo.png" alt="CSIRT PALI">
+                    <span>CSIRT PALI</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Main</div>
+                    <div class="nav-item">
+                        <a href="/admin/dashboard" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Management</div>
+                    <div class="nav-item">
+                        <a href="/admin/incidents" class="nav-link">
+                            <i class="nav-icon fas fa-exclamation-triangle"></i>
+                            Incidents
+                                <span class="badge"></span>
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/admin/news" class="nav-link">
+                            <i class="nav-icon fas fa-newspaper"></i>
+                            News & Updates
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/admin/users" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            Users
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Reports</div>
+                    <div class="nav-item">
+                        <a href="/admin/reports" class="nav-link">
+                            <i class="nav-icon fas fa-chart-bar"></i>
+                            Analytics
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/admin/reports/security" class="nav-link">
+                            <i class="nav-icon fas fa-shield-alt"></i>
+                            Security Logs
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">System</div>
+                    <div class="nav-item">
+                        <a href="/admin/settings" class="nav-link">
+                            <i class="nav-icon fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Account</div>
+                    <div class="nav-item">
+                        <a href="/admin/profile" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            Profile
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/auth/logout" class="nav-link">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title">Dashboard</h1>
+                </div>
+
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="search-icon fas fa-search"></i>
+                        <input type="text" class="search-input" placeholder="Search...">
+                    </div>
+
+                    <div class="notifications">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-dot"></span>
+                        </button>
+                    </div>
+
+                    <div class="user-menu">
+                        <button class="user-btn">
+                            <div class="user-avatar">
+                            </div>
+                            <span></span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <!-- Page Content -->
+            <div class="page-content">
+                <div class="form-container">
+                    <div class="form-header">
+                        <div class="form-title">
+                            <i class="fas fa-newspaper"></i>
+                            <h1>Create News Article</h1>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="saveDraft">
+                                <i class="fas fa-save"></i>
+                                Save Draft
+                            </button>
+                            <a href="/admin/news" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i>
+                                Back to News
+                            </a>
+                        </div>
+                    </div>
+
+                    <form class="form-card" id="newsForm">
+                        <div class="form-section">
+                            <h3 class="section-title">Article Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="title" class="form-label required">Article Title</label>
+                                    <input type="text" id="title" name="title" class="form-input" required placeholder="Enter article title...">
+                                    <span class="form-error" id="title-error"></span>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="slug" class="form-label">URL Slug</label>
+                                    <input type="text" id="slug" name="slug" class="form-input" placeholder="auto-generated-from-title">
+                                    <small style="color: #6b7280; font-size: 0.75rem;">Leave empty to auto-generate from title</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="category" class="form-label required">Category</label>
+                                    <select id="category" name="category" class="form-select" required>
+                                        <option value="">Select category</option>
+                                        <option value="security_alert">Security Alert</option>
+                                        <option value="threat_intelligence">Threat Intelligence</option>
+                                        <option value="vulnerability">Vulnerability Advisory</option>
+                                        <option value="incident_report">Incident Report</option>
+                                        <option value="best_practices">Best Practices</option>
+                                        <option value="general">General News</option>
+                                    </select>
+                                    <span class="form-error" id="category-error"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="priority" class="form-label">Priority</label>
+                                    <select id="priority" name="priority" class="form-select">
+                                        <option value="low">Low</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="high">High</option>
+                                        <option value="critical">Critical</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="author" class="form-label">Author</label>
+                                    <input type="text" id="author" name="author" class="form-input" value="CSIRT PALI Team">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="publish_date" class="form-label">Publish Date</label>
+                                    <input type="datetime-local" id="publish_date" name="publish_date" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">Content</h3>
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="summary" class="form-label required">Article Summary</label>
+                                    <textarea id="summary" name="summary" class="form-textarea" rows="3" required placeholder="Brief summary of the article (used in previews and SEO)..."></textarea>
+                                    <span class="form-error" id="summary-error"></span>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="content" class="form-label required">Article Content</label>
+                                    <div class="editor-toolbar">
+                                        <button type="button" class="editor-btn" data-command="bold" title="Bold">
+                                            <i class="fas fa-bold"></i>
+                                        </button>
+                                        <button type="button" class="editor-btn" data-command="italic" title="Italic">
+                                            <i class="fas fa-italic"></i>
+                                        </button>
+                                        <button type="button" class="editor-btn" data-command="underline" title="Underline">
+                                            <i class="fas fa-underline"></i>
+                                        </button>
+                                        <div class="editor-separator"></div>
+                                        <button type="button" class="editor-btn" data-command="insertUnorderedList" title="Bullet List">
+                                            <i class="fas fa-list-ul"></i>
+                                        </button>
+                                        <button type="button" class="editor-btn" data-command="insertOrderedList" title="Numbered List">
+                                            <i class="fas fa-list-ol"></i>
+                                        </button>
+                                        <div class="editor-separator"></div>
+                                        <button type="button" class="editor-btn" data-command="createLink" title="Insert Link">
+                                            <i class="fas fa-link"></i>
+                                        </button>
+                                    </div>
+                                    <div id="content" class="form-editor" contenteditable="true" data-placeholder="Write your article content here..."></div>
+                                    <textarea id="content_hidden" name="content" style="display: none;" required></textarea>
+                                    <span class="form-error" id="content-error"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">Media & Attachments</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label">Featured Image</label>
+                                    <div class="file-upload">
+                                        <input type="file" id="featured_image" name="featured_image" accept="image/*">
+                                        <label for="featured_image" class="file-upload-label">
+                                            <i class="fas fa-image"></i>
+                                            <div>
+                                                <div>Click to upload featured image</div>
+                                                <small>PNG, JPG up to 2MB</small>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div id="featured-image-preview" class="image-preview"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Additional Files</label>
+                                    <div class="file-upload">
+                                        <input type="file" id="attachments" name="attachments[]" multiple>
+                                        <label for="attachments" class="file-upload-label">
+                                            <i class="fas fa-paperclip"></i>
+                                            <div>
+                                                <div>Click to upload files</div>
+                                                <small>PDF, DOC, TXT up to 10MB each</small>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div id="attachment-list" class="file-list"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">SEO & Metadata</h3>
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="meta_description" class="form-label">Meta Description</label>
+                                    <textarea id="meta_description" name="meta_description" class="form-textarea" rows="2" placeholder="SEO meta description (recommended: 150-160 characters)..."></textarea>
+                                    <small style="color: #6b7280; font-size: 0.75rem;">Characters: <span id="meta-count">0</span>/160</small>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="tags" class="form-label">Tags</label>
+                                    <div class="tags-container" id="tags-container">
+                                        <input type="text" class="tags-input" id="tags-input" placeholder="Type and press Enter to add tags...">
+                                    </div>
+                                    <input type="hidden" id="tags" name="tags">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Visibility</label>
+                                    <div class="radio-group">
+                                        <label class="radio-label">
+                                            <input type="radio" name="visibility" value="public" checked>
+                                            <span class="radio-mark"></span>
+                                            Public
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" name="visibility" value="internal">
+                                            <span class="radio-mark"></span>
+                                            Internal Only
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Options</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="featured" value="1">
+                                            <span class="checkmark"></span>
+                                            Feature this article
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="allow_comments" value="1" checked>
+                                            <span class="checkmark"></span>
+                                            Allow comments
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="send_notification" value="1">
+                                            <span class="checkmark"></span>
+                                            Send email notification
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions-bottom">
+                            <button type="button" class="btn btn-secondary" onclick="history.back()">
+                                <i class="fas fa-times"></i>
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="previewBtn">
+                                <i class="fas fa-eye"></i>
+                                Preview
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Publish Article
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Article Preview</h3>
+                <button type="button" class="modal-close" id="closePreview">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="previewContent">
+                <!-- Preview content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let tags = [];
+
+        // Sidebar toggle functionality
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        sidebarToggle.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('show');
+            } else {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+            }
+        });
+
+        // Auto-generate slug from title
+        document.getElementById('title').addEventListener('input', function() {
+            const slug = this.value.toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .trim();
+            document.getElementById('slug').placeholder = slug || 'auto-generated-slug';
+        });
+
+        // Rich text editor functionality
+        const editor = document.getElementById('content');
+        const contentHidden = document.getElementById('content_hidden');
+
+        // Editor toolbar buttons
+        document.querySelectorAll('.editor-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const command = this.getAttribute('data-command');
+                
+                if (command === 'createLink') {
+                    const url = prompt('Enter URL:');
+                    if (url) {
+                        document.execCommand(command, false, url);
+                    }
+                } else {
+                    document.execCommand(command, false, null);
+                }
+                
+                editor.focus();
+                updateHiddenContent();
+            });
+        });
+
+        // Update hidden content field
+        function updateHiddenContent() {
+            contentHidden.value = editor.innerHTML;
+        }
+
+        editor.addEventListener('input', updateHiddenContent);
+
+        // Placeholder behavior for editor
+        editor.addEventListener('focus', function() {
+            if (this.textContent.trim() === '') {
+                this.innerHTML = '';
+            }
+        });
+
+        editor.addEventListener('blur', function() {
+            if (this.textContent.trim() === '') {
+                this.innerHTML = '';
+            }
+            updateHiddenContent();
+        });
+
+        // File upload handling
+        document.getElementById('featured_image').addEventListener('change', function() {
+            const file = this.files[0];
+            const preview = document.getElementById('featured-image-preview');
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `
+                        <div class="image-preview-item">
+                            <img src="${e.target.result}" alt="Featured Image">
+                            <button type="button" class="image-remove" onclick="removeImage()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    `;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function removeImage() {
+            document.getElementById('featured_image').value = '';
+            document.getElementById('featured-image-preview').innerHTML = '';
+        }
+
+        // Tags functionality
+        const tagsInput = document.getElementById('tags-input');
+        const tagsContainer = document.getElementById('tags-container');
+        const tagsHidden = document.getElementById('tags');
+
+        tagsInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && this.value.trim()) {
+                e.preventDefault();
+                addTag(this.value.trim());
+                this.value = '';
+            }
+        });
+
+        function addTag(tagText) {
+            if (tagText && !tags.includes(tagText)) {
+                tags.push(tagText);
+                renderTags();
+                updateTagsInput();
+            }
+        }
+
+        function removeTag(tagText) {
+            tags = tags.filter(tag => tag !== tagText);
+            renderTags();
+            updateTagsInput();
+        }
+
+        function renderTags() {
+            const tagsHtml = tags.map(tag => `
+                <span class="tag">
+                    ${tag}
+                    <button type="button" class="tag-remove" onclick="removeTag('${tag}')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </span>
+            `).join('');
+            
+            const input = tagsContainer.querySelector('.tags-input');
+            tagsContainer.innerHTML = tagsHtml + input.outerHTML;
+            
+            // Re-attach event listener
+            const newInput = tagsContainer.querySelector('.tags-input');
+            newInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && this.value.trim()) {
+                    e.preventDefault();
+                    addTag(this.value.trim());
+                    this.value = '';
+                }
+            });
+        }
+
+        function updateTagsInput() {
+            tagsHidden.value = tags.join(',');
+        }
+
+        // Meta description character counter
+        document.getElementById('meta_description').addEventListener('input', function() {
+            const count = this.value.length;
+            document.getElementById('meta-count').textContent = count;
+            
+            if (count > 160) {
+                document.getElementById('meta-count').style.color = '#ef4444';
+            } else {
+                document.getElementById('meta-count').style.color = '#6b7280';
+            }
+        });
+
+        // Form submission
+        document.getElementById('newsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateForm()) {
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Publishing...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Article published successfully!');
+                    window.location.href = '/admin/news';
+                }, 2000);
+            }
+        });
+
+        // Save draft functionality
+        document.getElementById('saveDraft').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Saved';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }, 2000);
+            }, 1000);
+        });
+
+        // Form validation
+        function validateForm() {
+            let isValid = true;
+            const requiredFields = ['title', 'category', 'summary'];
+            
+            // Clear previous errors
+            document.querySelectorAll('.form-error').forEach(error => error.textContent = '');
+            document.querySelectorAll('.form-input, .form-select, .form-textarea, .form-editor').forEach(field => {
+                field.classList.remove('error');
+            });
+            
+            // Check required fields
+            requiredFields.forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                const errorElement = document.getElementById(fieldName + '-error');
+                
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    errorElement.textContent = 'This field is required';
+                    isValid = false;
+                }
+            });
+            
+            // Check editor content
+            if (!editor.textContent.trim()) {
+                editor.classList.add('error');
+                document.getElementById('content-error').textContent = 'Article content is required';
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        // Preview functionality
+        document.getElementById('previewBtn').addEventListener('click', function() {
+            const modal = document.getElementById('previewModal');
+            const previewContent = document.getElementById('previewContent');
+            
+            // Generate preview HTML
+            const title = document.getElementById('title').value;
+            const category = document.getElementById('category').value;
+            const author = document.getElementById('author').value;
+            const content = editor.innerHTML;
+            
+            previewContent.innerHTML = `
+                <article class="preview-article">
+                    <header class="preview-header">
+                        <div class="preview-category">${category.replace('_', ' ').toUpperCase()}</div>
+                        <h1 class="preview-title">${title}</h1>
+                        <div class="preview-meta">
+                            <span>By ${author}</span>
+                            <span>•</span>
+                            <span>${new Date().toLocaleDateString()}</span>
+                        </div>
+                    </header>
+                    <div class="preview-content">
+                        ${content}
+                    </div>
+                </article>
+            `;
+            
+            modal.style.display = 'flex';
+        });
+
+        // Close preview modal
+        document.getElementById('closePreview').addEventListener('click', function() {
+            document.getElementById('previewModal').style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('previewModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+
+        // Set default publish date to current time
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date().toISOString().slice(0, 16);
+            document.getElementById('publish_date').value = now;
+        });
+    </script>
+
+  

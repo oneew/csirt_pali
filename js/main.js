@@ -1,4 +1,4 @@
-// Main JavaScript for CSIRTAmericas Website
+
 
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scrolling for anchor links
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
         imageObserver.observe(img);
     });
 
-    console.log('CSIRTAmericas website loaded successfully!');
+    console.log('CSIRT website loaded successfully!');
 
     // Landing page functionality
     window.enterSite = function() {
@@ -193,26 +193,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // CCTV follow mouse
-    const cctvSection = document.querySelector('.cctv-section');
-    const cctvHead = document.getElementById('cctvHead');
-
-    if (cctvSection && cctvHead) {
-      cctvSection.addEventListener('mousemove', function(e) {
-        const rect = cctvSection.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        // const centerY = rect.height / 2; // not used for now
-        // Hitung sudut rotasi (misal, max 35 derajat ke kiri/kanan)
-        const maxAngle = 35;
-        const dx = (x - centerX) / centerX;
-        const rotateY = maxAngle * dx;
-        cctvHead.setAttribute('transform', `rotate(${rotateY},60,55)`);
-      });
-      cctvSection.addEventListener('mouseleave', function() {
-        cctvHead.setAttribute('transform', 'rotate(0,60,55)');
-      });
-    }
+  
 
 }); 
