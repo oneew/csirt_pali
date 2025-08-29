@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSIRT PALI - Classified Access</title>
+    <link rel="stylesheet" href="frontend/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+</head>
+<body>
+    <!-- Main Website Content -->
+    <div class="main-website" id="mainWebsite">
+        <header class="header transparent">
+            <nav class="navbar">
+                <div class="nav-container">
+                    <div class="nav-logo">
+                        <a href="/">
+                            <img src="frontend/images/bg_logo.png" alt="CSIRT_Pali Logo" class="logo">
+                        </a>
+                    </div>
+                    
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    
+                    <div class="nav-menu" id="nav-menu">
+                        <ul class="nav-list">
+                            <li class="nav-item">
+                                <a href="/" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/profile" class="nav-link">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/services" class="nav-link">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/gallery" class="nav-link">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/news" class="nav-link">News</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/contact" class="nav-link">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <section class="hero" id="home">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Protecting the Americas in Cyberspace</h1>
+                    <p class="hero-subtitle">
+                        Network of Computer Security Incident Response Teams (CSIRTs) from government organizations across the Americas, fostering collaboration and strengthening cybersecurity capabilities
+                    </p>
+                    <a href="/services" class="cta-btn">
+                        <i class="fas fa-shield-alt"></i>
+                        Explore Our Services
+                    </a>
+                </div>
+                <div class="hero-image">
+                    <img src="frontend/images/image1.png" alt="Cybersecurity Illustration">
+                </div>
+            </div>
+        </section>
+
+        <section class="about-us-section" id="profile">
+            <div class="about-us-container">
+                <div class="about-us-photo">
+                    <img src="frontend/images/bg_logo.png" alt="Logo CSIRT" />
+                </div>
+                <div class="about-us-info">
+                    <h2>About Us</h2>
+                    <p class="about-us-info-text">
+                        CSIRT PALI is a collaborative network of cybersecurity incident response teams across the Americas, dedicated to strengthening cybersecurity, sharing critical information, and enhancing incident response capabilities among member countries. We are committed to building a safer and more resilient digital ecosystem through collaboration, training, and knowledge exchange.
+                    </p>
+                    <a href="/profile" class="cta-btn" style="display: inline-flex; margin-top: 1rem;">
+                        <i class="fas fa-info-circle"></i>
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="requirements">
+            <div class="container">
+                <div class="requirements-content">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">
+                                1. What is the main objective of CSIRT PALI?
+                                <span class="faq-icon">
+                                    <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                                    <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
+                                </span>
+                            </button>
+                            <div class="faq-answer">Our main objective is to strengthen cybersecurity across the Americas region through collaboration, information sharing, and improving cybersecurity incident response capabilities among member organizations.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">
+                                2. What types of organizations can join the network?
+                                <span class="faq-icon">
+                                    <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                                    <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
+                                </span>
+                            </button>
+                            <div class="faq-answer">Primarily government CSIRTs from OAS member states, as well as other relevant cybersecurity organizations and institutions.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">
+                                3. What benefits does membership offer?
+                                <span class="faq-icon">
+                                    <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                                    <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
+                                </span>
+                            </button>
+                            <div class="faq-answer">Access to exclusive threat intelligence, professional training, technical assistance, and the opportunity to collaborate with other leading cybersecurity teams in the region.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button type="button" class="faq-question">
+                                4. How can organizations apply for membership?
+                                <span class="faq-icon">
+                                    <svg class="icon-plus" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+                                    <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg>
+                                </span>
+                            </button>
+                            <div class="faq-answer">Organizations can apply by contacting our coordination team through the contact form or by sending a formal application via email to our designated address.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="servicios">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="service-title">Cybersecurity Alerts</h3>
+                        <p class="service-description">
+                            We promote the exchange of critical cybersecurity alerts and threat intelligence across the network
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="service-title">Technical Assistance</h3>
+                        <p class="service-description">
+                            We provide technical assistance to strengthen and enhance CSIRT services and capabilities
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="service-title">CSIRT Community</h3>
+                        <p class="service-description">
+                            We offer specialized training and capacity building for cybersecurity professionals
+                        </p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="/services" class="cta-btn">
+                        <i class="fas fa-arrow-right"></i>
+                        View All Services
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Our Partners</h2>
+                    <div class="partners">
+                        <div class="partner-logo"><img src="frontend/images/Logo.png" alt="Partner 1"></div>
+                        <div class="partner-logo"><img src="frontend/images/PALI.png" alt="Partner 2"></div>
+                        <div class="partner-logo"><img src="frontend/images/Logo.png" alt="Partner 3"></div>
+                        <div class="partner-logo"><img src="frontend/images/PALI.png" alt="Partner 4"></div>
+                        <div class="partner-logo"><img src="frontend/images/Logo.png" alt="Partner 5"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer" id="contact">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="footer-logo">
+                            <img src="frontend/images/bg_logo.png" alt="CSIRTAmericas Logo">
+                        </div>
+                        <div class="footer-info">
+                            <p>&copy; 2024 CSIRT-PALI. All rights reserved.</p>
+                            <p>Contact: info@csirt-pali.org</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="frontend/js/main.js"></script>
+</body>
+</html>

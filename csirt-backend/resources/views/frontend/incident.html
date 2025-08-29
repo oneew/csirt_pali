@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CSIRT PALI Admin</title>
+    <link rel="stylesheet" href="frontend/css/admin.css">
+    <link rel="stylesheet" href="frontend/css/incident.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="frontend/images/Logo.png" alt="CSIRT PALI">
+                    <span>CSIRT PALI</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Main</div>
+                    <div class="nav-item">
+                        <a href="/admin/dashboard" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Management</div>
+                    <div class="nav-item">
+                        <a href="/admin/incidents" class="nav-link">
+                            <i class="nav-icon fas fa-exclamation-triangle"></i>
+                            Incidents
+                                <span class="badge"></span>
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/admin/news" class="nav-link">
+                            <i class="nav-icon fas fa-newspaper"></i>
+                            News & Updates
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/admin/users" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            Users
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Reports</div>
+                    <div class="nav-item">
+                        <a href="/admin/reports" class="nav-link">
+                            <i class="nav-icon fas fa-chart-bar"></i>
+                            Analytics
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/admin/reports/security" class="nav-link">
+                            <i class="nav-icon fas fa-shield-alt"></i>
+                            Security Logs
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">System</div>
+                    <div class="nav-item">
+                        <a href="/admin/settings" class="nav-link">
+                            <i class="nav-icon fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title">Account</div>
+                    <div class="nav-item">
+                        <a href="/admin/profile" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            Profile
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title">Dashboard</h1>
+                </div>
+
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="search-icon fas fa-search"></i>
+                        <input type="text" class="search-input" placeholder="Search...">
+                    </div>
+
+                    <div class="notifications">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-dot"></span>
+                        </button>
+                    </div>
+
+                    <div class="user-menu">
+                        <button class="user-btn">
+                            <div class="user-avatar">
+                            </div>
+                            <span></span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                <div class="form-container">
+                    <div class="form-header">
+                        <div class="form-title">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h1>Create New Incident</h1>
+                        </div>
+                        <div class="form-actions">
+                            <a href="/admin/incidents" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i>
+                                Back to Incidents
+                            </a>
+                        </div>
+                    </div>
+
+                    <form class="form-card" id="incidentForm">
+                        <div class="form-section">
+                            <h3 class="section-title">Basic Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="title" class="form-label required">Incident Title</label>
+                                    <input type="text" id="title" name="title" class="form-input" required>
+                                    <span class="form-error" id="title-error"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="severity" class="form-label required">Severity Level</label>
+                                    <select id="severity" name="severity" class="form-select" required>
+                                        <option value="">Select severity</option>
+                                        <option value="low">Low</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="high">High</option>
+                                        <option value="critical">Critical</option>
+                                    </select>
+                                    <span class="form-error" id="severity-error"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="category" class="form-label required">Category</label>
+                                    <select id="category" name="category" class="form-select" required>
+                                        <option value="">Select category</option>
+                                        <option value="malware">Malware</option>
+                                        <option value="phishing">Phishing</option>
+                                        <option value="ddos">DDoS Attack</option>
+                                        <option value="data_breach">Data Breach</option>
+                                        <option value="unauthorized_access">Unauthorized Access</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <span class="form-error" id="category-error"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select id="status" name="status" class="form-select">
+                                        <option value="open" selected>Open</option>
+                                        <option value="investigating">Investigating</option>
+                                        <option value="resolved">Resolved</option>
+                                        <option value="closed">Closed</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">Incident Details</h3>
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="description" class="form-label required">Description</label>
+                                    <textarea id="description" name="description" class="form-textarea" rows="4" required placeholder="Provide detailed description of the incident..."></textarea>
+                                    <span class="form-error" id="description-error"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="reported_by" class="form-label">Reported By</label>
+                                    <input type="text" id="reported_by" name="reported_by" class="form-input">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="assigned_to" class="form-label">Assigned To</label>
+                                    <select id="assigned_to" name="assigned_to" class="form-select">
+                                        <option value="">Select team member</option>
+                                        <option value="1">John Doe</option>
+                                        <option value="2">Jane Smith</option>
+                                        <option value="3">Mike Johnson</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="incident_date" class="form-label required">Incident Date</label>
+                                    <input type="datetime-local" id="incident_date" name="incident_date" class="form-input" required>
+                                    <span class="form-error" id="incident_date-error"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="discovery_date" class="form-label">Discovery Date</label>
+                                    <input type="datetime-local" id="discovery_date" name="discovery_date" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">Technical Details</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="affected_systems" class="form-label">Affected Systems</label>
+                                    <textarea id="affected_systems" name="affected_systems" class="form-textarea" rows="3" placeholder="List affected systems, IPs, or domains..."></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="attack_vector" class="form-label">Attack Vector</label>
+                                    <select id="attack_vector" name="attack_vector" class="form-select">
+                                        <option value="">Select attack vector</option>
+                                        <option value="email">Email</option>
+                                        <option value="web">Web Application</option>
+                                        <option value="network">Network</option>
+                                        <option value="physical">Physical</option>
+                                        <option value="social_engineering">Social Engineering</option>
+                                        <option value="unknown">Unknown</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="indicators" class="form-label">Indicators of Compromise (IoCs)</label>
+                                    <textarea id="indicators" name="indicators" class="form-textarea" rows="3" placeholder="List IPs, domains, file hashes, etc..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="section-title">Response Actions</h3>
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="initial_response" class="form-label">Initial Response Actions</label>
+                                    <textarea id="initial_response" name="initial_response" class="form-textarea" rows="4" placeholder="Describe immediate actions taken..."></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Priority Actions</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="actions[]" value="isolate_systems">
+                                            <span class="checkmark"></span>
+                                            Isolate affected systems
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="actions[]" value="notify_stakeholders">
+                                            <span class="checkmark"></span>
+                                            Notify stakeholders
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="actions[]" value="preserve_evidence">
+                                            <span class="checkmark"></span>
+                                            Preserve evidence
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="actions[]" value="update_security_rules">
+                                            <span class="checkmark"></span>
+                                            Update security rules
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="escalation_needed" class="form-label">Escalation Required</label>
+                                    <div class="radio-group">
+                                        <label class="radio-label">
+                                            <input type="radio" name="escalation_needed" value="yes">
+                                            <span class="radio-mark"></span>
+                                            Yes
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" name="escalation_needed" value="no" checked>
+                                            <span class="radio-mark"></span>
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions-bottom">
+                            <button type="button" class="btn btn-secondary" onclick="history.back()">
+                                <i class="fas fa-times"></i>
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                Create Incident
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Sidebar toggle functionality
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        sidebarToggle.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('show');
+            } else {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+            }
+        });
+
+        // Form validation and submission
+        const form = document.getElementById('incidentForm');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateForm()) {
+                // Show loading state
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    alert('Incident created successfully!');
+                    window.location.href = '/admin/incidents';
+                }, 2000);
+            }
+        });
+
+        function validateForm() {
+            let isValid = true;
+            const requiredFields = ['title', 'severity', 'category', 'description', 'incident_date'];
+            
+            // Clear previous errors
+            document.querySelectorAll('.form-error').forEach(error => error.textContent = '');
+            document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(field => {
+                field.classList.remove('error');
+            });
+            
+            requiredFields.forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                const errorElement = document.getElementById(fieldName + '-error');
+                
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    errorElement.textContent = 'This field is required';
+                    isValid = false;
+                }
+            });
+            
+            return isValid;
+        }
+
+        // Auto-set discovery date to current time if incident date is filled
+        document.getElementById('incident_date').addEventListener('change', function() {
+            const discoveryField = document.getElementById('discovery_date');
+            if (!discoveryField.value) {
+                discoveryField.value = new Date().toISOString().slice(0, 16);
+            }
+        });
+
+        // Set default incident date to current time
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date().toISOString().slice(0, 16);
+            document.getElementById('incident_date').value = now;
+        });
+    </script>
+</body>
+
+<!-- Logout form for CSRF protection -->
+<form id="logout-form" action="/logout" method="POST" style="display: none;">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+</form>
+
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - CSIRT PALI</title>
+    <link rel="stylesheet" href="frontend/css/gallery.css">
+    <link rel="stylesheet" href="frontend/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+</head>
+<body>
+    <header class="header transparent">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="/">
+                        <img src="frontend/images/Logo.png" alt="CSIRT_Pali Logo" class="logo">
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/profile" class="nav-link">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/services" class="nav-link">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/gallery" class="nav-link">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/news" class="nav-link">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/contact" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="gallery-hero">
+        <div class="gallery-hero-content">
+            <h1 class="hero-title">Gallery</h1>
+            <p class="hero-subtitle">
+                Explore our collection of cybersecurity events, training sessions, and collaborative moments
+            </p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="news">News</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+                <button class="filter-btn" data-filter="training">Training</button>
+                <button class="filter-btn" data-filter="meetings">Meetings</button>
+                <button class="filter-btn" data-filter="workshops">Workshops</button>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+                <div class="gallery-item" data-category="events">
+                    <img src="frontend/images/bg2.png" alt="Cybersecurity Conference 2024" loading="lazy">
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">Cybersecurity Conference 2024</h3>
+                        <p class="gallery-item-date">March 15, 2024</p>
+                        <p class="gallery-item-description">Annual conference bringing together CSIRT teams from across the Americas to discuss emerging threats and best practices.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="training">
+                    <img src="frontend/images/Logo.png" alt="Incident Response Training" loading="lazy">
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">Incident Response Training</h3>
+                        <p class="gallery-item-date">February 20, 2024</p>
+                        <p class="gallery-item-description">Comprehensive training session on advanced incident response techniques and methodologies.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="meetings">
+                    <img src="frontend/images/PALI.png" alt="Regional CSIRT Meeting" loading="lazy">
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">Regional CSIRT Meeting</h3>
+                        <p class="gallery-item-date">January 10, 2024</p>
+                        <p class="gallery-item-description">Quarterly meeting discussing regional cybersecurity challenges and collaborative solutions.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="workshops">
+                    <img src="frontend/images/bg2.png" alt="Threat Intelligence Workshop" loading="lazy">
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">Threat Intelligence Workshop</h3>
+                        <p class="gallery-item-date">December 5, 2023</p>
+                        <p class="gallery-item-description">Hands-on workshop on threat intelligence gathering and analysis techniques.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="events">
+                    <img src="frontend/images/Logo.png" alt="Cybersecurity Awareness Day" loading="lazy">
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">Cybersecurity Awareness Day</h3>
+                        <p class="gallery-item-date">October 20, 2023</p>
+                        <p class="gallery-item-description">Public awareness event promoting cybersecurity education and best practices.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="training">
+                    <img src="frontend/images/PALI.png" alt="Malware Analysis Training" loading="lazy">
+                    <div class="gallery-item-content">
+                        <h3 class="gallery-item-title">Malware Analysis Training</h3>
+                        <p class="gallery-item-date">September 15, 2023</p>
+                        <p class="gallery-item-description">Advanced training on malware detection, analysis, and mitigation strategies.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="pagination-btn">&laquo;</a>
+                <a href="#" class="pagination-btn active">1</a>
+                <a href="#" class="pagination-btn">2</a>
+                <a href="#" class="pagination-btn">3</a>
+                <a href="#" class="pagination-btn">&raquo;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="frontend/images/Logo.png" alt="CSIRTAmericas Logo">
+                    </div>
+                    <div class="footer-info">
+                        <p>&copy; 2024 CSIRT-PALI. All rights reserved.</p>
+                        <p>Contact: info@csirt-pali.org</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Gallery filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        item.style.animation = 'fadeInUp 0.6s ease-out';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Header transparency on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.remove('transparent');
+            } else {
+                header.classList.add('transparent');
+            }
+        });
+
+        // Pagination functionality
+        document.querySelectorAll('.pagination-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.pagination-btn').forEach(b => b.classList.remove('active'));
+                if (!btn.textContent.includes('«') && !btn.textContent.includes('»')) {
+                    btn.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

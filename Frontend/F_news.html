@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - CSIRT PALI</title>
+    <link rel="stylesheet" href="css/F_news.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+</head>
+<body>
+    <header class="header transparent">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <img src="images/Logo.png" alt="CSIRT_Pali Logo" class="logo">
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="index.html#home" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="profile.html" class="nav-link">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="services.html" class="nav-link">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="gallery.html" class="nav-link">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="news.html" class="nav-link active">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=".html" class="nav-link">RFC 2350</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contact.html" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="news-hero">
+        <div class="news-hero-content">
+            <h1 class="hero-title">Cybersecurity News</h1>
+            <p class="hero-subtitle">
+                Stay ahead of emerging threats with real-time cybersecurity intelligence, expert analysis, and critical security updates from across the Americas
+            </p>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <div class="container">
+            <div class="news-filters">
+                <button class="filter-btn active" data-filter="all">All Updates</button>
+                <button class="filter-btn" data-filter="critical">Critical Alerts</button>
+                <button class="filter-btn" data-filter="threats">Threat Intelligence</button>
+                <button class="filter-btn" data-filter="updates">Security Updates</button>
+                <button class="filter-btn" data-filter="events">Events & Training</button>
+                <button class="filter-btn" data-filter="announcements">Announcements</button>
+            </div>
+
+            <div class="news-grid" id="news-grid">
+                <!-- Featured Critical Alert -->
+                <article class="featured-news loading" data-category="critical">
+                    <div class="featured-image">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="featured-content">
+                        <div class="featured-badge">Critical Security Alert</div>
+                        <h2 class="featured-title">Zero-Day Vulnerability in Enterprise Software</h2>
+                        <p class="featured-excerpt">
+                            CSIRT PALI has identified a critical zero-day vulnerability affecting enterprise software used by millions of organizations across the Americas. The vulnerability allows remote code execution and immediate patching is strongly recommended. Our response team is actively monitoring exploitation attempts and providing mitigation strategies.
+                        </p>
+                        <a href="#" class="featured-btn">
+                            <i class="fas fa-shield-alt"></i>
+                            View Security Advisory
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Threat Intelligence Cards -->
+                <article class="news-card loading" data-category="threats">
+                    <div class="news-image">
+                        <i class="fas fa-virus"></i>
+                        <div class="news-category">Threat Intelligence</div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">
+                            <i class="fas fa-clock"></i>
+                            2 hours ago
+                        </div>
+                        <h3 class="news-title">Advanced Persistent Threat Group Targets Financial Sector</h3>
+                        <p class="news-excerpt">
+                            Our threat intelligence team has identified a sophisticated APT campaign specifically targeting financial institutions across Latin America. The attack uses advanced social engineering techniques combined with custom malware.
+                        </p>
+                        <div class="news-meta">
+                            <div class="news-tags">
+                                <span class="news-tag">APT</span>
+                                <span class="news-tag">Banking</span>
+                                <span class="news-tag">Malware</span>
+                            </div>
+                            <a href="#" class="read-more-btn">
+                                <i class="fas fa-eye"></i>
+                                Full Analysis
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card loading" data-category="updates">
+                    <div class="news-image">
+                        <i class="fas fa-shield-alt"></i>
+                        <div class="news-category">Security Update</div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">
+                            <i class="fas fa-clock"></i>
+                            4 hours ago
+                        </div>
+                        <h3 class="news-title">Enhanced AI-Powered Threat Detection System Launch</h3>
+                        <p class="news-excerpt">
+                            CSIRT PALI unveils next-generation threat detection capabilities powered by machine learning algorithms, improving detection accuracy by 45% and reducing false positives significantly.
+                        </p>
+                        <div class="news-meta">
+                            <div class="news-tags">
+                                <span class="news-tag">AI/ML</span>
+                                <span class="news-tag">Detection</span>
+                                <span class="news-tag">Innovation</span>
+                            </div>
+                            <a href="#" class="read-more-btn">
+                                <i class="fas fa-cog"></i>
+                                Learn More
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card loading" data-category="critical">
+                    <div class="news-image">
+                        <i class="fas fa-bug"></i>
+                        <div class="news-category">Critical Alert</div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">
+                            <i class="fas fa-clock"></i>
+                            6 hours ago
+                        </div>
+                        <h3 class="news-title">Ransomware Campaign Targeting Healthcare Infrastructure</h3>
+                        <p class="news-excerpt">
+                            Emergency alert: A coordinated ransomware campaign is actively targeting healthcare systems across multiple countries. Immediate defensive measures are recommended for all healthcare organizations.
+                        </p>
+                        <div class="news-meta">
+                            <div class="news-tags">
+                                <span class="news-tag">Ransomware</span>
+                                <span class="news-tag">Healthcare</span>
+                                <span class="news-tag">Emergency</span>
+                            </div>
+                            <a href="#" class="read-more-btn">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Emergency Response
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card loading" data-category="events">
+                    <div class="news-image">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div class="news-category">Upcoming Event</div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">
+                            <i class="fas fa-clock"></i>
+                            1 day ago
+                        </div>
+                        <h3 class="news-title">Regional Cybersecurity Summit 2025 - Registration Open</h3>
+                        <p class="news-excerpt">
+                            Join the premier cybersecurity event bringing together 500+ experts, government officials, and industry leaders for three days of cutting-edge presentations, workshops, and networking opportunities.
+                        </p>
+                        <div class="news-meta">
+                            <div class="news-tags">
+                                <span class="news-tag">Summit</span>
+                                <span class="news-tag">Training</span>
+                                <span class="news-tag">Networking</span>
+                            </div>
+                            <a href="#" class="read-more-btn">
+                                <i class="fas fa-ticket-alt"></i>
+                                Register Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="pagination-btn" id="prevPage">&laquo;</a>
+                <a href="#" class="pagination-btn active" data-page="1">1</a>
+                <a href="#" class="pagination-btn" data-page="2">2</a>
+                <a href="#" class="pagination-btn" data-page="3">3</a>
+                <a href="#" class="pagination-btn" data-page="4">4</a>
+                <a href="#" class="pagination-btn" data-page="5">5</a>
+                <a href="#" class="pagination-btn" id="nextPage">&raquo;</a>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/Logo.png" alt="CSIRT PALI Logo">
+                    </div>
+                    <div class="footer-info">
+                        <p>&copy; 2024 CSIRT-PALI. All rights reserved.</p>
+                        <p>Emergency Contact: emergency@csirt-pali.org | +1-555-CSIRT-911</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Header transparency on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.remove('transparent');
+            } else {
+                header.classList.add('transparent');
+            }
+        });
+
+        // Animated counter for hero stats
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 20);
+        }
+
+        // Initialize counters when hero section is visible
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = document.querySelectorAll('.hero-stat-number');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-count'));
+                        animateCounter(counter, target);
+                    });
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        heroObserver.observe(document.querySelector('.news-hero'));
+
+        // News filter functionality with improved animations
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const newsItems = document.querySelectorAll('.news-card, .featured-news');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                newsItems.forEach((item, index) => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.classList.add('loaded');
+                        }, index * 100);
+                    } else {
+                        item.style.display = 'none';
+                        item.classList.remove('loaded');
+                    }
+                });
+            });
+        });
+
+        // Pagination functionality
+        const paginationBtns = document.querySelectorAll('.pagination-btn');
+        let currentPage = 1;
+
+        paginationBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                if (btn.id === 'prevPage' && currentPage > 1) {
+                    currentPage--;
+                } else if (btn.id === 'nextPage' && currentPage < 5) {
+                    currentPage++;
+                } else if (btn.dataset.page) {
+                    currentPage = parseInt(btn.dataset.page);
+                }
+
+                // Update active pagination button
+                paginationBtns.forEach(b => b.classList.remove('active'));
+                const activeBtn = document.querySelector(`[data-page="${currentPage}"]`);
+                if (activeBtn) activeBtn.classList.add('active');
+
+                // Smooth scroll to top of news section
+                document.querySelector('.news-section').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Newsletter form submission
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value;
+            const btn = this.querySelector('.newsletter-btn');
+            
+            // Simulate loading
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+                btn.style.background = '#10b981';
+                this.reset();
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-bell"></i> Subscribe to Alerts';
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            }, 2000);
+        });
+
+        // Loading animation for news cards
+        const loadingObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('loaded');
+                    }, Math.random() * 300);
+                    loadingObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe all loading elements
+        document.querySelectorAll('.loading').forEach(el => {
+            loadingObserver.observe(el);
+        });
+
+        // Enhanced hover effects for news cards
+        document.querySelectorAll('.news-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.querySelector('.news-image').style.transform = 'scale(1.02)';
+                this.querySelector('.read-more-btn').style.transform = 'translateX(5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.querySelector('.news-image').style.transform = 'scale(1)';
+                this.querySelector('.read-more-btn').style.transform = 'translateX(0)';
+            });
+        });
+
+        // Real-time clock for news timestamps
+        function updateTimestamps() {
+            const timeElements = document.querySelectorAll('.news-date');
+            timeElements.forEach(element => {
+                // This would typically connect to a real-time service
+                // For demo purposes, we're just updating the visual
+            });
+        }
+
+        // Update timestamps every minute
+        setInterval(updateTimestamps, 60000);
+
+        // Add smooth transitions to filter changes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all cards as loaded
+            setTimeout(() => {
+                document.querySelectorAll('.loading').forEach(el => {
+                    el.classList.add('loaded');
+                });
+            }, 500);
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft' && currentPage > 1) {
+                document.getElementById('prevPage').click();
+            } else if (e.key === 'ArrowRight' && currentPage < 5) {
+                document.getElementById('nextPage').click();
+            }
+        });
+
+        // Performance optimization: Lazy load images
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                }
+            });
+        });
+
+        // Add accessibility improvements
+        document.querySelectorAll('.filter-btn, .pagination-btn, .read-more-btn').forEach(btn => {
+            btn.addEventListener('focus', function() {
+                this.style.outline = '3px solid rgba(102, 126, 234, 0.5)';
+                this.style.outlineOffset = '2px';
+            });
+            
+            btn.addEventListener('blur', function() {
+                this.style.outline = '';
+                this.style.outlineOffset = '';
+            });
+        });
+    </script>
+</body>
+</html>
